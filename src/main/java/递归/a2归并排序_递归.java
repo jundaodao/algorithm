@@ -56,4 +56,9 @@ public class a2归并排序_递归 {
         System.out.println("排序后：" + Arrays.toString(arr));
     }
 
+    /**
+     * 时间复杂度，符合 master公式
+     * T(N) = T(N/2) + T(N+2) +O(N) = 2T(N/2) +O(N) = O(Nlog2^N)
+     * */
+
 }
