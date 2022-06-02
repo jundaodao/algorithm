@@ -1,16 +1,19 @@
 package 递归;
+import java.util.Arrays;
 
 /**
- * @Description 荷兰国旗问题：
- * 荷兰国旗是三色，给定一个数组，给定数组中的一个数m，在 O(N) 复杂度下，空间复杂度 O(1) 情况下，
+ * 荷兰国旗问题：
+ * 荷兰国旗是三色。
+ * 给定一个数组，给定数组中的一个数m，在 O(N) 复杂度下，空间复杂度 O(1) 情况下，
  * 数组的左边都比m小，数组的右边都被 m大，数组的中间都是 m，左右两边数可以无须；
  */
 
-import java.util.Arrays;
-
 /***
- * 解题思路：分三种情况
- * arr[i]<m  交换位置，左边界+1，i++；
+ * 解题思路：
+ * 三个指针，两个指针往一起靠，循环退出条件是遍历的指针在右边的边界以内；
+ *
+ * 分三种情况
+ * arr[i]<m  arr[i]跟左边界数交换，左边界+1，i++；
  * arr[i]>m  arr[i]跟右边界数交换，右边界扩 1，i不变
  * arr[i]=m  i++
  * 这样就把数据分成三部分，左：比 m小，右比 m大，中间是 m
@@ -35,6 +38,7 @@ public class a5荷兰国旗问题_指针 {
         }
     }
 
+    // todo O(1) 空间交换数据
     public static void swap(int[] arr, int i, int j) {
         int swap = arr[i];
         arr[i] = arr[j];
@@ -42,7 +46,7 @@ public class a5荷兰国旗问题_指针 {
     }
 
     public static void main(String[] args) {
-        int[] arr = {10,2, 5, 1, 6, 8, 10, 5,1,3,-1};
+        int[] arr = {10, 2, 5, 1, 6, 8, 10, 5, 1, 3, -1};
         partition(arr, 5);
         System.out.println(Arrays.toString(arr));
     }
