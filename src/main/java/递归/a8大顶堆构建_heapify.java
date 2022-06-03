@@ -20,8 +20,8 @@ public class a8大顶堆构建_heapify {
         //todo 存在 左孩子
         while (left < heapSize) {
             // todo 两个孩子谁值大，就把值大的，把下标给 largest
-            int largest = (left + 1) < heapSize && arr[left + 1] < arr[left] ?
-                    left : left + 1;
+            int largest = ((left + 1) < heapSize && arr[left + 1] > arr[left]) ?
+                    left + 1 : left;
             // todo 两个孩子的最大值与父做比较，返回下标
             largest = arr[largest] > arr[index] ? largest : index;
             if (index == largest) { //todo 这种情况就不用交换位置了
