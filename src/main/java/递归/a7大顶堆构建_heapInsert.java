@@ -14,15 +14,16 @@ import java.util.Arrays;
  * 物理存储在数组
  * 逻辑概念在完全二叉树
  */
-public class a7大顶堆构建 {
+public class a7大顶堆构建_heapInsert {
     int[] heap     = new int[10];          //初始化构造一个堆
     int   heapSize = 0;                   //通过 heapSize来区分堆的边界
 
     /**
      * 思路：先将这个数字放在最后面，heapSize++,然后一直找他的父做比较
-     * 如果比父结点大，就杀父，自己做，一直向上，直到遇阻
+     * 如果比父结点大，就杀父，自己做，一直向上，直到遇阻;
+     * num 一直往上走就是 「heapInsert」
      */
-    public void buildHeap(int num) {
+    public void heapInsert(int num) {
         int father = (heapSize - 1) / 2; //父结点下标
         int child  = heapSize;  //子节点下标
         heap[heapSize++] = num; // 放在最后面
@@ -41,19 +42,19 @@ public class a7大顶堆构建 {
     }
 
     public static void main(String[] args) {
-        a7大顶堆构建 topN = new a7大顶堆构建();
-        topN.buildHeap(1);
-        topN.buildHeap(5);
-        topN.buildHeap(3);
-        topN.buildHeap(8);
-        topN.buildHeap(6);
-        topN.buildHeap(9);
-        topN.buildHeap(7);
-        topN.buildHeap(10);
-        topN.buildHeap(2);
-        topN.buildHeap(4);
+        a7大顶堆构建_heapInsert heap = new a7大顶堆构建_heapInsert();
+        heap.heapInsert(1);
+        heap.heapInsert(5);
+        heap.heapInsert(3);
+        heap.heapInsert(8);
+        heap.heapInsert(6);
+        heap.heapInsert(9);
+        heap.heapInsert(7);
+        heap.heapInsert(10);
+        heap.heapInsert(2);
+        heap.heapInsert(4);
 
-        System.out.println("大顶堆topN：" + Arrays.toString(topN.heap));
+        System.out.println("大顶堆topN：" + Arrays.toString(heap.heap));
     }
 
 }
