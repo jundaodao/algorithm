@@ -15,21 +15,18 @@ import java.util.Arrays;
  * 逻辑概念在完全二叉树
  */
 public class a7大顶堆构建_heapInsert {
-    int[] heap     = new int[10];          //初始化构造一个堆
-    int   heapSize = 0;                   //通过 heapSize来区分堆的边界
-
     /**
      * 思路：先将这个数字放在最后面，heapSize++,然后一直找他的父做比较
      * 如果比父结点大，就杀父，自己做，一直向上，直到遇阻;
      * num 一直往上走就是 「heapInsert」
      */
-    public void heapInsert(int num) {
-        int father = (heapSize - 1) / 2; //父结点下标
+    public static void heapInsert(int[] arr, int heapSize, int num) {
         int child  = heapSize;  //子节点下标
-        heap[heapSize++] = num; // 放在最后面
-        // 子节点比父结点值大
-        while (heap[child] > heap[father]) {
-            swap(heap, father, child); //交换父子位置
+        int father = (heapSize - 1) / 2; //父节点下标
+        arr[heapSize++] = num; //num赋值
+        //todo 子节点比父结点值大，就交换位置，然后继续循环
+        while (arr[child] > arr[father]) {
+            swap(arr, father, child); //交换父子位置
             child = father; //更新下标
             father = (child - 1) / 2; //更新下标
         }
@@ -42,19 +39,20 @@ public class a7大顶堆构建_heapInsert {
     }
 
     public static void main(String[] args) {
-        a7大顶堆构建_heapInsert heap = new a7大顶堆构建_heapInsert();
-        heap.heapInsert(1);
-        heap.heapInsert(5);
-        heap.heapInsert(3);
-        heap.heapInsert(8);
-        heap.heapInsert(6);
-        heap.heapInsert(9);
-        heap.heapInsert(7);
-        heap.heapInsert(10);
-        heap.heapInsert(2);
-        heap.heapInsert(4);
+        int[] arr      = new int[10];
+        int   heapSize = 0;
+        heapInsert(arr, heapSize++, 1);
+        heapInsert(arr, heapSize++, 5);
+        heapInsert(arr, heapSize++, 3);
+        heapInsert(arr, heapSize++, 8);
+        heapInsert(arr, heapSize++, 6);
+        heapInsert(arr, heapSize++, 9);
+        heapInsert(arr, heapSize++, 7);
+        heapInsert(arr, heapSize++, 10);
+        heapInsert(arr, heapSize++, 2);
+        heapInsert(arr, heapSize++, 4);
 
-        System.out.println("大顶堆topN：" + Arrays.toString(heap.heap));
+        System.out.println("大顶堆heapInsert：" + Arrays.toString(arr));
     }
 
 }
