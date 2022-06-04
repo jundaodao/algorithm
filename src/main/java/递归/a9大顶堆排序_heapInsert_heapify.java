@@ -6,19 +6,20 @@ import java.util.Arrays;
  * 思路：
  * 1、先 heapInsert 将其变成一个大顶堆
  * 2、不断的做 heapify 直到遇到退出条件，每次 heapify 都会出现一个最大值，然后倒着就排好序了！
+ * 3、时间复杂度是 O(NlogN)
  */
 public class a9大顶堆排序_heapInsert_heapify {
     public static void heapSort(int[] arr) {
         int[] heap = new int[arr.length];
         // todo heapInsert 先构建一个大顶堆
-        for (int i = 0; i < arr.length; i++) {
-            a7大顶堆构建_heapInsert.heapInsert(heap, i, arr[i]);
+        for (int i = 0; i < arr.length; i++) {  // O(N)
+            a7大顶堆构建_heapInsert.heapInsert(heap, i, arr[i]); //O(logN)
         }
         // todo 不断的 heapify，每次都顶出一个最大值放最后
         int heapSize = heap.length;
-        while (heapSize > 0) {
-            swap(heap, heapSize);
-            a8大顶堆构建_heapify.heapify(heap, 0, --heapSize);
+        while (heapSize > 0) { //O(N)
+            swap(heap, heapSize); //O(1)
+            a8大顶堆构建_heapify.heapify(heap, 0, --heapSize); //O(logN)
         }
         System.out.println("堆排序后：" + Arrays.toString(heap));
     }
