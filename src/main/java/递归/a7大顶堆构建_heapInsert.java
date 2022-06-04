@@ -16,19 +16,20 @@ import java.util.Arrays;
  */
 public class a7大顶堆构建_heapInsert {
     /**
-     * 思路：先将这个数字放在最后面，heapSize++,然后一直找他的父做比较
-     * 如果比父结点大，就杀父，自己做，一直向上，直到遇阻;
-     * num 一直往上走就是 「heapInsert」
+     * 思路：
+     * arr 是需要构建大顶堆的数组
+     * index 是要构建数字的下标
+     * <p>
+     * 如果子节点比父节点大「判断」，就杀父，自己做「交换」，一直向上，直到遇阻「循环」;
+     * 一直往上走操作就是 「heapInsert」
+     * 调用这个方法一次，index及以前的数就是个大顶堆
+     * 可以自己想象来一个数「index」我构建一次,直到构建完~
      */
-    public static void heapInsert(int[] arr, int heapSize, int num) {
-        int child  = heapSize;  //子节点下标
-        int father = (heapSize - 1) / 2; //父节点下标
-        arr[heapSize++] = num; //num赋值
+    public static void heapInsert(int[] arr, int index) {
         //todo 子节点比父结点值大，就交换位置，然后继续循环
-        while (arr[child] > arr[father]) {
-            swap(arr, father, child); //交换父子位置
-            child = father; //更新下标
-            father = (child - 1) / 2; //更新下标
+        while (arr[index] > arr[(index - 1) / 2]) {
+            swap(arr, index, (index - 1) / 2); //交换父子位置
+            index = (index - 1) / 2;
         }
     }
 
@@ -39,18 +40,17 @@ public class a7大顶堆构建_heapInsert {
     }
 
     public static void main(String[] args) {
-        int[] arr      = new int[10];
-        int   heapSize = 0;
-        heapInsert(arr, heapSize++, 1);
-        heapInsert(arr, heapSize++, 5);
-        heapInsert(arr, heapSize++, 3);
-        heapInsert(arr, heapSize++, 8);
-        heapInsert(arr, heapSize++, 6);
-        heapInsert(arr, heapSize++, 9);
-        heapInsert(arr, heapSize++, 7);
-        heapInsert(arr, heapSize++, 10);
-        heapInsert(arr, heapSize++, 2);
-        heapInsert(arr, heapSize++, 4);
+        int[] arr = {1, 5, 3, 8, 6, 9, 7, 10, 2, 4};
+        heapInsert(arr, 0);
+        heapInsert(arr, 1);
+        heapInsert(arr, 2);
+        heapInsert(arr, 3);
+        heapInsert(arr, 4);
+        heapInsert(arr, 5);
+        heapInsert(arr, 6);
+        heapInsert(arr, 7);
+        heapInsert(arr, 8);
+        heapInsert(arr, 9);
 
         System.out.println("大顶堆heapInsert：" + Arrays.toString(arr));
     }
