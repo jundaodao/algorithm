@@ -7,22 +7,6 @@ package 链表;
  * 1、拿出来一个节点拼在新链表的头上，直到所有节点都取完
  */
 
-class Node {
-    private int value;
-    public Node next;
-
-    Node(int value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return "Node{" +
-                "value=" + value +
-                '}';
-    }
-}
-
 public class b1链表翻转 {
     public static void revertNode(Node node) {
         // todo 用于保存翻转后的链表
