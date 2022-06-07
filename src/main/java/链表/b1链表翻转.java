@@ -1,7 +1,7 @@
 package 链表;
 
 /**
- * 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
+ * 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
  * @Description coding题，算不上算法
  * 解题思路：
  * 1、拿出来一个节点拼在新链表的头上，直到所有节点都取完
