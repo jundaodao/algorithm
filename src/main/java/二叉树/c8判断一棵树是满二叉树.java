@@ -1,9 +1,10 @@
 package 二叉树;
 
 /**
- * @Description TODO
- * @Author jjk
- * @Date 2022/6/11 9:40 PM
+ * 解题思路：
+ * 求二叉树的最大深度 =n
+ * 遍历二叉树的整个节点个数=m
+ * m = 2^n-1
  */
 public class c8判断一棵树是满二叉树 {
 }
